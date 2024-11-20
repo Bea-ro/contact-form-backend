@@ -2,13 +2,13 @@ require('dotenv').config()
 const express = require('express')
 const nodemailer = require('nodemailer')
 const cors = require('cors')
-const bodyParser = requiere('body-parser')
+const bodyParser = require('body-parser')
 
 const app = express()
 
 const corsOptions = {
-  origin: 'https://dominio.com',
-  methods: ['POST'],
+  origin: 'https://urldelfronted', //en dedsarrollo 'http://localhost:4200'
+  methods: ['GET', 'POST'],
   allowHeaders: ['Content-Type', 'Authorization'],
   credentials: true
 }
@@ -55,7 +55,7 @@ app.post('/api/send-email', (req, res, next) => {
   })
 })
 
-//Escuchar puerto 3000 solo en desarrollo (en producción eliminarlo)
-app.listen(3000, () => console.log('Servidor en el puerto 3000'))
+//Escuchar puerto 3000 en desarrollo, en producción eliminar app.listen():
+//app.listen(process.env.PORT, () => console.log('Servidor en el puerto', process.env.PORT))
 
 module.exports = app
