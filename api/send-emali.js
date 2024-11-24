@@ -20,9 +20,11 @@ app.use(bodyParser.json())
 const transporter = nodemailer.createTransport({
   host: 'smtp.proveedordedominio.com', //el host SMTP de tu proveedor de dominio
   port: 465, //465 si tienes https y 587 si tienes http
-  secure: true, //true si port=465 y false si port=587  auth: {
-  user: process.env.NODemailer_USER,
-  pass: process.env.NODemailer_PASS
+  secure: true, //true si port=465 y false si port=587
+  auth: {
+    user: process.env.NODemailer_USER,
+    pass: process.env.NODemailer_PASS
+  }
 })
 
 app.post('/api/send-email', (req, res, next) => {
